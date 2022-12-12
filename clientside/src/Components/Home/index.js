@@ -3,6 +3,9 @@ import React from 'react'
 
 import './style.css'
 
+
+import Calculator from "../Calculator"
+
 class Home extends React.Component{
 
   constructor(props) {
