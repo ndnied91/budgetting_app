@@ -1,13 +1,12 @@
 const INITIAL_STATE={
-  title:'',
-  name: '',
-  age: ''
+  totalIncome: 0,
+  expenses: 0,
+  saving: 0
 }
-
 
 export default function(state= INITIAL_STATE  , action){
   switch(action.type){
-    case 'FIRST':
+    case 'CALCULATOR':
       return action.payload
 
     default:

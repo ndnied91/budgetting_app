@@ -2,7 +2,6 @@
 import axios from 'axios'
 
 
-export const firstTest = (values) => {
-  console.log(values)
-    return ({ type: 'FIRST' , payload : values })
+export const updateCalc = (values) => {
+    return ({ type: 'CALCULATOR' , payload : values })
   }

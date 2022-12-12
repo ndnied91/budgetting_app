@@ -3,13 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './style.css'
 
-import { firstTest } from '../../actions'
+import { updateCalc } from '../../actions'
 
 class Calculator extends React.Component{
   constructor(props){
       super(props)
 
-        this.state = { title: ''  , name: ''  };
+        this.state = { totalIncome: 0  , expenses: 0  , saving: 0};
         this.onInputchange = this.onInputchange.bind(this);
   }
 
@@ -24,11 +24,7 @@ class Calculator extends React.Component{
 
     const handleSubmit = event => {
        event.preventDefault();
-
-       console.log(this.state.title)
-       console.log(this.state.name)
-
-       this.props.firstTest(this.state)
+       this.props.updateCalc(this.state) //save on redux
      };
 
 
@@ -37,8 +33,15 @@ class Calculator extends React.Component{
 
               <div>
                <form onSubmit={handleSubmit}>
-               <input className="form-control" style={{height: '25px'}} name="title" type="text"  placeholder="Enter a title" value={this.state.title} onChange={this.onInputchange} required />
-               <input className="form-control" style={{height: '25px'}} name="name" type="text"  placeholder="Enter a name" value={this.state.name} onChange={this.onInputchange} required />
+               <label> Total Income</label>
+               <input className="form-control" style={{height: '25px'}} name="title" type="text"  placeholder="Total Income" value={this.state.totalIncome} onChange={this.onInputchange} required />
+               <label> Expenses</label>
+               <input className="form-control" style={{height: '25px'}} name="name" type="text"  placeholder="Expenses" value={this.state.expenses} onChange={this.onInputchange} required />
+               <label>How much do you want to save</label>
+               <input className="form-control" style={{height: '25px'}} name="name" type="text"  placeholder="How much to save" value={this.state.saving} onChange={this.onInputchange} required />
+
+
+
 
                  <button type="submit">Submit</button>
                </form>
@@ -55,4 +58,4 @@ const mapStateToProps = (state) => {
   return { test: state.test }
 }
 
-export default connect( mapStateToProps, {firstTest}  )(Calculator)
+export default connect( mapStateToProps, { updateCalc }  )(Calculator)
