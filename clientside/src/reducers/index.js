@@ -1,8 +1,10 @@
 
 import {combineReducers} from 'redux'
 
-import testReducer from './testReducer'
+import values from './userValuesReducer'
+import expenses from './expensesReducer'
 
 export default combineReducers({
-  test: testReducer
+  expenses: expenses,
+  values: values,
 })

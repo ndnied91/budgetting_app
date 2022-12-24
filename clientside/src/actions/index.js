@@ -1,7 +1,12 @@
 
 import axios from 'axios'
 
+  export const updateExpenses = (expenses) => {
+      return ({ type: 'EXPENSES' , payload : expenses })
+    }
 
-export const updateCalc = (values) => {
-    return ({ type: 'CALCULATOR' , payload : values })
-  }
+
+
+    export const updateUserValues = (values) =>{
+      return { type: 'USER_VALUES', payload: values }
+    }

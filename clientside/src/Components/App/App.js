@@ -1,14 +1,17 @@
 
 
 import './App.css';
-import Home from '../Home'
-import Calculator from '../Calculator'
+import Header from '../Header'
+import InputForm from '../InputForm'
+
+import MainView from '../MainView'
+
 
 function App() {
   return (
     <div className="container">
-      <Home/>
-      <Calculator/>
+      <Header/>
+      <InputForm/>
     </div>
   );
 }
