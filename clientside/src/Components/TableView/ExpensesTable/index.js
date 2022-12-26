@@ -9,7 +9,7 @@ import ProductRow from '../ProductRow'
 
 
 
-import { updateExpenses } from '../../../actions'
+import { updateExpenses , addToSumExpenses  } from '../../../actions'
 
 let id = 0
 
@@ -39,13 +39,8 @@ class Products extends React.Component {
     this.state.products.push(product);
     this.setState(this.state.products);
 
-  }
+    this.props.addToSumExpenses( parseInt(this.state.products[this.state.products.length-2].price ))
 
-  handleClick(evt){
-    if (evt.which === 13) {
-
-      // handleAddEvent(evt)
-  }
 
   }
 
@@ -67,9 +62,7 @@ class Products extends React.Component {
   };
   render() {
 
-    const handleClick = (evt)=> {
-          if (evt.which === 13) { this.handleAddEvent(evt) }
-        }
+    const handleClick = (evt)=> { if (evt.which === 13) { this.handleAddEvent(evt) } }
 
     return (
       <div onKeyDown={handleClick}>
@@ -83,7 +76,7 @@ class Products extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return {}
+  return {expensesSum : state.expensesSum.total}
 }
 
-export default connect( mapStateToProps, { updateExpenses }  )(Products)
+export default connect( mapStateToProps, { updateExpenses, addToSumExpenses  }  )(Products)
