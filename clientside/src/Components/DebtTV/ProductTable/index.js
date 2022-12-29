@@ -14,6 +14,7 @@ class ProductTable extends React.Component {
       if (product.name.indexOf(filterText) === -1) {
         return;
       }
+
       return (<ProductRow onProductTableUpdate={onProductTableUpdate} product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
     });
     return (
@@ -25,7 +26,7 @@ class ProductTable extends React.Component {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Price</th>
+              <th>Amount</th>
             </tr>
           </thead>
 

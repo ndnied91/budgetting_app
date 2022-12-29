@@ -6,7 +6,7 @@ import EditableCell from '../EditableCell'
 import { connect } from 'react-redux'
 
 
-import { subToSumExpenses } from '../../../actions'
+import { subToSumExpenses  } from '../../../actions'
 
 class ProductRow extends React.Component {
   onDelEvent() {

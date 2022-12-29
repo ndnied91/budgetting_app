@@ -6,7 +6,9 @@ import './style.css'
 import { updateUserValues } from '../../actions'
 
 
-import ExpensesTable from '../TableView/ExpensesTable'
+import ExpensesTable from '../ExpenseTV/ExpensesTable'
+
+import DebtTable from '../DebtTV/DebtTable'
 
 class InputForm extends React.Component{
   constructor(props){
@@ -29,7 +31,7 @@ class InputForm extends React.Component{
 
     const handleSubmit = event => {
        event.preventDefault();
-       this.props.updateUserValues(this.state) 
+       this.props.updateUserValues(this.state)
      };
 
 
@@ -47,9 +49,12 @@ class InputForm extends React.Component{
              </div>
 
 
+<DebtTable/>
 
 
               <ExpensesTable/>
+
+
 
           </div>
     )

@@ -9,7 +9,7 @@ import ProductRow from '../ProductRow'
 
 
 
-import { updateExpenses , addToSumExpenses  } from '../../../actions'
+import { updateExpenses , addToSumExpenses  , removeExpenses } from '../../../actions'
 
 let id = 0
 
@@ -31,12 +31,19 @@ class Products extends React.Component {
     let index = this.state.products.indexOf(product);
     this.state.products.splice(index, 1);
     this.setState(this.state.products);
+
+    this.props.removeExpenses(product)
+
   };
 
   handleAddEvent(evt) {
     let id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
     let product = { id: id, name: "", price: "" }
     this.state.products.push(product);
+
+
+    this.props.updateExpenses(this.state.products[this.state.products.length-2]) //adds new value
+
     this.setState(this.state.products);
 
     this.props.addToSumExpenses( parseInt(this.state.products[this.state.products.length-2].price ))
@@ -58,7 +65,7 @@ class Products extends React.Component {
     return product;
   });
     this.setState({products:newProducts});
-    this.props.updateExpenses(this.state.products)
+    // this.props.updateExpenses(this.state.products)
   };
   render() {
 
@@ -79,4 +86,4 @@ const mapStateToProps = (state) => {
   return {expensesSum : state.expensesSum.total}
 }
 
-export default connect( mapStateToProps, { updateExpenses, addToSumExpenses  }  )(Products)
+export default connect( mapStateToProps, { updateExpenses, addToSumExpenses  , removeExpenses }  )(Products)

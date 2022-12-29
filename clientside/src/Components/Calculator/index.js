@@ -8,25 +8,13 @@ class Calculator extends React.Component {
 
   render() {
 
-    const renderValues=()=> {
-      // console.log(this.props.expenses )
-
-      // if(this.props.expenses.length > 0){
-      //   this.props.expenses.forEach((item, i) => {
-      //     console.log(item.price)
-      //   });
-      // }
-
-
-    }
-
-
 
     return (
       <div>
-          {renderValues()}
-          Calculator Function
-          {total}
+
+
+        Total Monthly Expenses:
+          {this.props.totalExpenses > 0 ? this.props.totalExpenses : null }
       </div>
     );
 
@@ -37,7 +25,7 @@ class Calculator extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return { expenses : state.expenses  }
+  return { totalExpenses : state.expensesSum.total  }
 }
 
 export default connect( mapStateToProps, null  )(Calculator)
