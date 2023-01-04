@@ -6,9 +6,7 @@ import './style.css'
 import { updateUserValues } from '../../actions'
 
 
-import ExpensesTable from '../ExpenseTV/ExpensesTable'
 
-import DebtTable from '../DebtTV/DebtTable'
 
 class InputForm extends React.Component{
   constructor(props){
@@ -34,7 +32,6 @@ class InputForm extends React.Component{
        this.props.updateUserValues(this.state)
      };
 
-
     return(
       <div className="header">
 
@@ -42,19 +39,14 @@ class InputForm extends React.Component{
                <form onSubmit={handleSubmit}>
                <label> Total Income</label>
                <input className="form-control" style={{height: '25px'}} name="totalIncome" type="text"  placeholder="Total Income" value={this.state.totalIncome} onChange={this.onInputchange} required />
+               <br/>
+
                <label>How much do you want to save</label>
                <input className="form-control" style={{height: '25px'}} name="saving" type="text"  placeholder="How much to save" value={this.state.saving} onChange={this.onInputchange} required />
+               <br/>
                  <button type="submit">Submit</button>
                </form>
              </div>
-
-
-<DebtTable/>
-
-
-              <ExpensesTable/>
-
-
 
           </div>
     )

@@ -21,7 +21,7 @@ let arr = []
         }
 
     case 'DELETE_DEBT_ARRAY':
-      return  {...state, debt: state.expenses.filter(todo => todo.id !== action.payload.id)}
+      return  {...state, debt: state.debt.filter(todo => todo.id !== action.payload.id)}
 
     default:
       return state

@@ -3,15 +3,10 @@ import { render } from "react-dom";
 
 import EditableCell from '../EditableCell'
 
-import { connect } from 'react-redux'
-
-
-import { subToSumExpenses  } from '../../../actions'
 
 class ProductRow extends React.Component {
   onDelEvent() {
     this.props.onDelEvent(this.props.product);
-    this.props.subToSumExpenses(this.props.product.price)
 
   }
   render() {
@@ -39,5 +34,4 @@ class ProductRow extends React.Component {
 
 }
 
-
-export default connect( null , {  subToSumExpenses  }  )(ProductRow)
+export default ProductRow

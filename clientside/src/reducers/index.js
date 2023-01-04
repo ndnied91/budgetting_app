@@ -3,10 +3,10 @@ import {combineReducers} from 'redux'
 
 import userValues from './userValuesReducer'
 import expensesArray from './expensesReducer'
-import expensesSum from './expensesSumReducer'
-import totalDebt from './debtReducer'
 import debtArray from './debtArrayReducer'
 
+import expensesSum from './totalExpensesReducer'
+import totalDebt from './totalDebtReducer'
 
 
 
@@ -16,5 +16,4 @@ export default combineReducers({
   userValues: userValues,
   totalDebt: totalDebt,
   debtArray: debtArray
-
 })

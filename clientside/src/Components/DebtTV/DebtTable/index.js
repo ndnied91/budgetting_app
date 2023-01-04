@@ -9,7 +9,7 @@ import ProductRow from '../ProductRow'
 
 
 
-import { updateExpenses , addToSumExpenses  , removeExpenses } from '../../../actions'
+import { addToDebtArray , subToDebtArray ,  addTotalDebt , subTotalDebt } from '../../../actions'
 
 let id = 0
 
@@ -32,7 +32,11 @@ class Products extends React.Component {
     this.state.products.splice(index, 1);
     this.setState(this.state.products);
 
-    this.props.removeExpenses(product)
+    this.props.subToDebtArray(product) //removed deleted debt object
+
+    this.props.subTotalDebt(product.price)
+
+
 
   };
 
@@ -41,13 +45,14 @@ class Products extends React.Component {
     let product = { id: id, name: "", price: "" }
     this.state.products.push(product);
 
-
-    this.props.updateExpenses(this.state.products[this.state.products.length-2]) //adds new value
-
     this.setState(this.state.products);
 
-    this.props.addToSumExpenses( parseInt(this.state.products[this.state.products.length-2].price ))
+    //gets integer and adds to total debt
 
+    this.props.addTotalDebt(parseInt(this.state.products[this.state.products.length-2].price ))
+
+
+    this.props.addToDebtArray(this.state.products[this.state.products.length-2] ) //adds new object to debt array
 
   }
 
@@ -65,15 +70,16 @@ class Products extends React.Component {
     return product;
   });
     this.setState({products:newProducts});
-    // this.props.updateExpenses(this.state.products)
   };
   render() {
 
     const handleClick = (evt)=> { if (evt.which === 13) { this.handleAddEvent(evt) } }
 
     return (
+      <div>
       <div onKeyDown={handleClick}>
         <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)} onRowAdd={this.handleAddEvent.bind(this)} onRowDel={this.handleRowDel.bind(this)} products={this.state.products} filterText={this.state.filterText}/>
+      </div>
       </div>
     );
 
@@ -83,7 +89,7 @@ class Products extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return {expensesSum : state.expensesSum.total}
+  return {}
 }
 
-export default connect( mapStateToProps, { updateExpenses, addToSumExpenses  , removeExpenses }  )(Products)
+export default connect( mapStateToProps, {  addToDebtArray  , subToDebtArray  , addTotalDebt , subTotalDebt }  )(Products)

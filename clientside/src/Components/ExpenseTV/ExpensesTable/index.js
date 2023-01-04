@@ -9,7 +9,8 @@ import ProductRow from '../ProductRow'
 
 
 
-import { updateExpenses , addToSumExpenses  , removeExpenses } from '../../../actions'
+
+import { updateExpenses , addTotalExpenses  , removeExpenses , subTotalSumExpenses } from '../../../actions'
 
 let id = 0
 
@@ -33,6 +34,7 @@ class Products extends React.Component {
     this.setState(this.state.products);
 
     this.props.removeExpenses(product)
+    this.props.subTotalSumExpenses(product.price)
 
   };
 
@@ -46,7 +48,7 @@ class Products extends React.Component {
 
     this.setState(this.state.products);
 
-    this.props.addToSumExpenses( parseInt(this.state.products[this.state.products.length-2].price ))
+    this.props.addTotalExpenses(parseInt(this.state.products[this.state.products.length-2].price ))
 
 
   }
@@ -65,7 +67,6 @@ class Products extends React.Component {
     return product;
   });
     this.setState({products:newProducts});
-    // this.props.updateExpenses(this.state.products)
   };
   render() {
 
@@ -86,4 +87,4 @@ const mapStateToProps = (state) => {
   return {expensesSum : state.expensesSum.total}
 }
 
-export default connect( mapStateToProps, { updateExpenses, addToSumExpenses  , removeExpenses }  )(Products)
+export default connect( mapStateToProps, { updateExpenses, addTotalExpenses  , removeExpenses  , subTotalSumExpenses}  )(Products)
