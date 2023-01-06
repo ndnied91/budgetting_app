@@ -16,10 +16,15 @@ class InputForm extends React.Component{
         this.onInputchange = this.onInputchange.bind(this);
   }
 
-  onInputchange(event) {
+  componentDidMount(){
+    console.log(this.props.totalIncome)
+      this.setState({totalIncome : this.props.totalIncome});
+      this.setState({saving : this.props.savingAmount});
 
-    console.log(event.target.name)
-    console.log(event.target.value)
+
+  }
+
+  onInputchange(event) {
      this.setState({ [event.target.name]: event.target.value });
    }
 
@@ -56,7 +61,7 @@ class InputForm extends React.Component{
 
 
 const mapStateToProps = (state) => {
-  return { }
+  return { totalIncome : state.userValues.totalIncome , savingAmount: state.userValues.saving }
 }
 
 export default connect( mapStateToProps, { updateUserValues }  )(InputForm)

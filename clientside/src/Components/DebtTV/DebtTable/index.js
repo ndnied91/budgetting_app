@@ -23,6 +23,20 @@ class Products extends React.Component {
     this.state.products = [  { id: 1, name: '', price: '' } ];
 
   }
+
+  componentDidMount(){
+
+    if(this.props.debtArray.length > 1){
+      this.state.products = this.props.debtArray //setting state based on the prop of expense Array
+      this.props.debtArray.forEach((item, i) => {
+        this.props.addTotalDebt(item.price > 0 ?parseInt(item.price) : null) //checks if there isnt empty input
+      });
+    }
+
+  }
+
+
+
   handleUserInput(filterText) {
     this.setState({filterText: filterText});
   };
@@ -42,6 +56,16 @@ class Products extends React.Component {
 
   handleAddEvent(evt) {
     let id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
+
+    console.log(parseInt(this.state.products[this.state.products.length-1].price ))
+
+    if(parseInt(this.state.products[this.state.products.length-1].price )){
+      this.props.addTotalDebt(parseInt(this.state.products[this.state.products.length-1].price ))
+    }
+
+
+
+
     let product = { id: id, name: "", price: "" }
     this.state.products.push(product);
 
@@ -49,10 +73,7 @@ class Products extends React.Component {
 
     //gets integer and adds to total debt
 
-    this.props.addTotalDebt(parseInt(this.state.products[this.state.products.length-2].price ))
-
-
-    this.props.addToDebtArray(this.state.products[this.state.products.length-2] ) //adds new object to debt array
+    this.props.addToDebtArray(this.state.products) //adds whole array
 
   }
 
@@ -89,7 +110,7 @@ class Products extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return {}
+  return { totalDebt : state.totalDebt.totalDebt , debtArray: state.debtArray.debt }
 }
 
 export default connect( mapStateToProps, {  addToDebtArray  , subToDebtArray  , addTotalDebt , subTotalDebt }  )(Products)

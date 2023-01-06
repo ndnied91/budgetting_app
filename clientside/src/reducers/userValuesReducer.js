@@ -1,15 +1,15 @@
 
 const INITIAL_STATE={
   id: 0,
-  totalIncome: 0,
-  saving: 0,
+  totalIncome: "4000",
+  saving: "1500",
   expenses: []
 }
 
 
 
 
-export default function(state=[] , action){
+export default function(state=INITIAL_STATE , action){
   switch(action.type){
     case 'USER_VALUES':
       return action.payload

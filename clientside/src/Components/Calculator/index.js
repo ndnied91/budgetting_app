@@ -16,7 +16,7 @@ class Calculator extends React.Component {
 const renderExpensesResults=() =>{
   return (
     <div>
-    Total Results:
+    Total Expenses:
     {this.props.totalExpenses}
     </div>
   )
@@ -31,6 +31,22 @@ const renderDebtResults=() =>{
   )
 }
 
+
+const calculate=() =>{
+
+  let res = parseInt(this.props.totalIncome) - parseInt(this.props.saving) - parseInt(this.props.totalDebt) - parseInt(this.props.totalExpenses)
+  return (
+
+
+    <div>
+        Remaining Money: {res}
+        <br/>
+        Weekly Budget : {res/5}
+
+
+    </div>
+  )
+}
 
     return (
       <div>
@@ -48,6 +64,10 @@ const renderDebtResults=() =>{
         <div> {this.props.totalExpenses > 0 ? renderExpensesResults() : null } </div>
       </div>
 
+
+      <div> </div>
+        {calculate()}
+
       </div>
     );
 
@@ -58,7 +78,11 @@ const renderDebtResults=() =>{
 
 
 const mapStateToProps = (state) => {
-  return { totalExpenses : state.expensesSum.total , totalDebt : state.totalDebt.totalDebt }
+  return { totalExpenses : state.expensesSum.total ,
+           totalDebt : state.totalDebt.totalDebt ,
+           totalIncome : state.userValues.totalIncome,
+           saving: state.userValues.saving
+           }
 }
 
 export default connect( mapStateToProps, null  )(Calculator)

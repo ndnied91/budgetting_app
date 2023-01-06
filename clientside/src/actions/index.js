@@ -24,7 +24,6 @@ import axios from 'axios'
     }
 
     export const subTotalSumExpenses = (values) =>{
-      console.log('REMOVING' , values)
       return { type: 'SUB_EXPENSES_TOTAL', payload: values }
     }
 
