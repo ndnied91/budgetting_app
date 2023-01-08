@@ -8,6 +8,8 @@ import debtArray from './debtArrayReducer'
 import expensesSum from './totalExpensesReducer'
 import totalDebt from './totalDebtReducer'
 
+import weeklyBudget from './weeklyBudget'
+
 
 
 export default combineReducers({
@@ -15,5 +17,6 @@ export default combineReducers({
   expensesSum : expensesSum,
   userValues: userValues,
   totalDebt: totalDebt,
-  debtArray: debtArray
+  debtArray: debtArray,
+  weeklyBudget : weeklyBudget
 })

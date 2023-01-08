@@ -21,7 +21,6 @@ class MainView extends React.Component{
 
 
 const mapStateToProps = (state) => {
-  // console.log(state)
   return { values: state.userValues }
 }
 

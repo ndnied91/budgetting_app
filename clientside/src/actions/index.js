@@ -48,3 +48,19 @@ import axios from 'axios'
     export const subToDebtArray = (values) =>{
       return { type: 'DELETE_DEBT_ARRAY', payload: values }
     }
+
+
+
+
+
+
+
+
+    //FOR WEEKLY BUDGET 2D ARRAY
+        export const addWeeklySpending = (values) =>{
+          return { type: 'ADD_WEEKLY_ITEM', payload: values }
+        }
+
+        export const subWeeklySpending = (values) =>{
+          return { type: 'SUB_WEEKLY_ITEM', payload: values }
+        }

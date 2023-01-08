@@ -28,7 +28,7 @@ class Products extends React.Component {
   componentDidMount(){
 
     if(this.props.expensesArray.length > 1){
-      this.state.products = this.props.expensesArray //setting state based on the prop of expense Array
+      this.setState({products: this.props.expensesArray});
       this.props.expensesArray.forEach((item, i) => {
         this.props.addTotalExpenses(item.price > 0 ?parseInt(item.price) : null) //checks if there isnt empty input
       });
@@ -81,9 +81,6 @@ class Products extends React.Component {
 
 
   render() {
-
-    // console.log(this.props.expensesSum)
-
     const handleClick = (evt)=> { if (evt.which === 13) { this.handleAddEvent(evt) } }
 
     return (

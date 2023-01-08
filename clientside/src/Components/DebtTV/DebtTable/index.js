@@ -27,7 +27,7 @@ class Products extends React.Component {
   componentDidMount(){
 
     if(this.props.debtArray.length > 1){
-      this.state.products = this.props.debtArray //setting state based on the prop of expense Array
+          this.setState({products: this.props.debtArray});
       this.props.debtArray.forEach((item, i) => {
         this.props.addTotalDebt(item.price > 0 ?parseInt(item.price) : null) //checks if there isnt empty input
       });

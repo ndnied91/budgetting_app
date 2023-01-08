@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 import ExpensesTable from '../ExpenseTV/ExpensesTable'
 import DebtTable from '../DebtTV/DebtTable'
 
+
+import WeekTV from '../WeekTV/WeekTable'
+
 let total = 0
 
 
@@ -48,6 +51,19 @@ const calculate=() =>{
   )
 }
 
+
+const renderWeekTable = () =>{
+  return(
+  <div>
+      {
+        Array.from({ length: 1 }, (_, k) => (
+       <div key = {k}>  <WeekTV/> </div>
+        ))
+      }
+      </div>
+    )
+}
+
     return (
       <div>
 
@@ -67,6 +83,15 @@ const calculate=() =>{
 
       <div> </div>
         {calculate()}
+
+        <br/>
+        <br/>
+        <br/>
+
+
+        <h2> Weekly View </h2>
+        {renderWeekTable()}
+
 
       </div>
     );

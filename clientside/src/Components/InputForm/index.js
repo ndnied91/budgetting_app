@@ -17,7 +17,6 @@ class InputForm extends React.Component{
   }
 
   componentDidMount(){
-    console.log(this.props.totalIncome)
       this.setState({totalIncome : this.props.totalIncome});
       this.setState({saving : this.props.savingAmount});
 
