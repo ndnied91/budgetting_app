@@ -27,6 +27,14 @@ import axios from 'axios'
       return { type: 'SUB_EXPENSES_TOTAL', payload: values }
     }
 
+    export const updateTotalExpenses = (values) =>{
+      let total=0
+      values.forEach((item, i) => { if(item.price.length > 0){ total = total + parseInt(item.price) } });
+
+
+      return { type: 'UPDATE_TOTAL_EXPENSE', payload: total }
+    }
+
 
 
 
@@ -39,13 +47,23 @@ import axios from 'axios'
     }
 
 
+    export const updateTotalDebt = (values) =>{
+      let totalDebt=0
+      values.forEach((item, i) => { if(item.price.length > 0){ totalDebt = totalDebt + parseInt(item.price) } });
+
+      return { type: 'UPDATE_TOTAL_DEBT', payload: totalDebt }
+    }
+
+
 
 //FOR DEBT ARRAY
     export const addToDebtArray = (values) =>{
+      //adds new array into state
       return { type: 'INSERT_DEBT_ARRAY', payload: values }
     }
 
     export const subToDebtArray = (values) =>{
+      //removes a specific index from array
       return { type: 'DELETE_DEBT_ARRAY', payload: values }
     }
 

@@ -25,8 +25,8 @@ class ProductTable extends React.Component {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Amount</th>
+              <th> {this.props.values[0]}</th>
+              <th>{this.props.values[1]}</th>
             </tr>
           </thead>
 

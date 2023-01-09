@@ -1,8 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 
-import EditableCell from '../EditableCell'
-
+import EditableCell from '../../SharedComponents/EditableCell'
 
 class ProductRow extends React.Component {
   onDelEvent() {
