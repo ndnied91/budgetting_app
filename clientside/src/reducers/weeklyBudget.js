@@ -1,11 +1,16 @@
 
 const INITIAL_STATE = {
-    weeklyBudget:
-    [{ id: "1" , date: "01/04/2023", name: "groceries" , price: "40"} ,
-    { id: "2", date: "01/04/2023" , name: "dinner", price: "20" },
-    { id: "3" , date: "01/04/2023" , name: "movies" , price: "10"} ]
+     weeklyBudget: [{ id: "1" , date: "01/04/2023", name: "groceries" , price: "40"} ,  { id: "2", date: "01/04/2023" , name: "dinner", price: "20" },
+         { id: "3" , date: "01/04/2023" , name: "movies" , price: "10"}]
 
 };
+
+
+
+
+// budget = [ [{ id: "1", date: "01/04/2023" , name: "dinner", price: "20" } , { id: "2", date: "01/04/2023" , name: "dinner", price: "20" } ] ,
+ // [{ id: "1", date: "01/04/2023" , name: "dinner", price: "20" } , { id: "2", date: "01/04/2023" , name: "dinner", price: "20" }]  ]
+
 
 
 

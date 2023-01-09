@@ -18,52 +18,34 @@ class Calculator extends React.Component {
 
   render() {
 
-    const renderDebtResults=() =>{
-      return (
-        <div>
-        Total Debt:
-        {this.props.debt}
-        </div>
-      )
-    }
-
 
 const calculate=() =>{
 
-  let res = parseInt(this.props.totalIncome) - parseInt(this.props.saving) - parseInt(this.props.totalDebt) - parseInt(this.props.totalExpenses)
+  let res = parseInt(this.props.totalIncome) - parseInt(this.props.saving) - parseInt(this.props.totalDebt) - parseInt(this.props.expensesSum)
   return (
 
 
     <div>
-        Remaining Money: {res}
-        <br/>
-        Weekly Budget : {res/5}
-
-
+        <h2> Calculations </h2>
+        <p>Total Income: ${parseInt(this.props.totalIncome)} </p>
+        <p> Total Spendings: {parseInt(this.props.totalDebt) + parseInt(this.props.expensesSum)} </p>
+        <p>You want to save : ${parseInt(this.props.saving)} </p>
+        <p> Remaining Money: {res} </p>
+        <p> Weekly Budget : {res/5}  </p>
     </div>
   )
 }
 
-        const renderWeekTable = () =>{
-          return(
-          <div>
-              {
-                Array.from({ length: 1 }, (_, k) => (
-                  <div key = {k}>  <WeekTV/> </div>
-                ))
-              }
-              </div>
-            )
-        }
+      const renderWeekTable = () =>{
+        return <div> { Array.from({ length: 1 }, (_, k) => ( <div key = {k}>  <WeekTV/> </div> )) } </div>
+      }
 
     return (
       <div>
 
-
       <div>
         <h1> Debt table </h1>
         <DebtTable/>
-        <div> {this.props.totalDebt > 0 ? renderDebtResults() : null } </div>
       </div>
 
       <div>
@@ -73,7 +55,7 @@ const calculate=() =>{
 
 
       <div> </div>
-        {calculate()}
+
 
         <br/>
         <br/>
@@ -81,8 +63,8 @@ const calculate=() =>{
 
 
         <h2> Weekly View </h2>
-        {renderWeekTable()}
-
+          <WeekTV/>
+          {calculate()}
 
       </div>
     );
@@ -95,10 +77,10 @@ const calculate=() =>{
 
 const mapStateToProps = (state) => {
   return {
-           totalDebt : state.totalDebt.totalDebt ,
+           totalDebt : state.totalDebt.total ,
            totalIncome : state.userValues.totalIncome,
            saving: state.userValues.saving,
-           totalExpenses :state.expensesSum.total
+           expensesSum :state.expensesSum.total
            }
 }
 
